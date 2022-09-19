@@ -11,6 +11,7 @@ const provideInfo = (e) => {
   amIpartyMember(nameInput);
   guestsPlusOne();
   totalAmountofGuests();
+  getMeme();
 };
 
 button.addEventListener("click", provideInfo);
@@ -84,3 +85,19 @@ const totalAmountofGuests = async () => {
   }
 };
 // totalAmountofGuests();
+
+const urlMeme = "https://test-api-faker.herokuapp.com/vigi-33/meme";
+
+const getMeme = async () => {
+  try {
+    const resolve = await fetch(urlMeme);
+    const data = await resolve.json();
+    const img = document.createElement("img");
+    img.setAttribute("src", `${data.imgUrl}`);
+    document.body.append(img);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+// getMeme();
